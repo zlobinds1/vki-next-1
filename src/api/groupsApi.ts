@@ -1,17 +1,23 @@
-import type GroupInterface from '@/types/GroupInterface';
+import { getGroupsDb } from '@/db/groupDb';
+import GroupInterface from '@/types/GroupInterface';
 
 export const getGroupsApi = async (): Promise<GroupInterface[]> => {
+
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API}groups`);
+    const response = await fetch('http://localhost:3000/api/groups');
 
     if (!response.ok) {
-      throw new Error(`Ошибка HTTP: ${response.status}${response.statusText}`);
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const groups = await response.json() as GroupInterface[];
-    return groups;
+
+    const data =  response.json(); 
+
+    return data;
+
+  } catch (error) {
+    console.error("Failed to fetch groups from API:", error);
+    
+    return []; 
   }
-  catch (err) {
-    console.log('>>> getGroupsApi', err);
-    return [] as GroupInterface[];
-  }
+
 };

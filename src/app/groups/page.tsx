@@ -1,17 +1,15 @@
-import Groups from '@/components/Groups/Groups';
 import Page from '@/components/layout/Page/Page';
-import { type Metadata } from 'next/types';
 
-export const metadata: Metadata = {
-  title: 'Группы - Вэб разработка ВКИ - Next.js шаблон',
-  description: 'Шаблон для веб-разработки с использованием Next.js, React Hook Form, Yup, SCSS, Eslint, TanStack Query (React Query)',
+
+const HomePage = (): React.ReactNode => {
+  return (
+    <Page>
+      <h1>Groups</h1>
+      <h2>Заголовок 2</h2>
+      <h3>Заголовок 3</h3>
+      <h4>Заголовок 4</h4>
+    </Page>
+  );
 };
 
-const GroupsPage = (): React.ReactNode => (
-  <Page>
-    <h1>Группы</h1>
-    <Groups />
-  </Page>
-);
-
-export default GroupsPage;
+export default HomePage;
